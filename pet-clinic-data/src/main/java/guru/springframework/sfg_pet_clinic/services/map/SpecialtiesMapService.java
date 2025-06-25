@@ -1,21 +1,21 @@
 package guru.springframework.sfg_pet_clinic.services.map;
 
-import guru.springframework.sfg_pet_clinic.model.PetType;
-import guru.springframework.sfg_pet_clinic.services.PetTypeService;
+import guru.springframework.sfg_pet_clinic.model.Specialty;
+import guru.springframework.sfg_pet_clinic.services.SpecialtiesService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
+public class SpecialtiesMapService extends AbstractMapService<Specialty, Long> implements SpecialtiesService {
 
     @Override
-    public Set<PetType> findAll() {
+    public Set<Specialty> findAll() {
         return super.findAll();
     }
 
     @Override
-    public void delete(PetType object) {
+    public void delete(Specialty object) {
         super.delete(object);
     }
 
@@ -25,12 +25,12 @@ public class PetTypeMapService extends AbstractMapService<PetType, Long> impleme
     }
 
     @Override
-    public PetType save(PetType object) {
+    public Specialty save(Specialty object) {
         return super.save(object);
     }
 
     @Override
-    public PetType findById(Long id) {
+    public Specialty findById(Long id) {
         return super.findById(id);
     }
 }

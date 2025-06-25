@@ -5,7 +5,6 @@ import guru.springframework.sfg_pet_clinic.model.Pet;
 import guru.springframework.sfg_pet_clinic.model.PetType;
 import guru.springframework.sfg_pet_clinic.model.Vet;
 import guru.springframework.sfg_pet_clinic.services.OwnerService;
-import guru.springframework.sfg_pet_clinic.services.PetService;
 import guru.springframework.sfg_pet_clinic.services.PetTypeService;
 import guru.springframework.sfg_pet_clinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
