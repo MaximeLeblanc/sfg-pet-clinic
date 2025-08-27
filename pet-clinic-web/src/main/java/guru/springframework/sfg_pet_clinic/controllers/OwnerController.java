@@ -26,20 +26,13 @@ public class OwnerController {
         webDataBinder.setDisallowedFields("id");
     }
 
-    @RequestMapping({"", "/", "/index", "/index.html"})
-    public String listOwners(Model model) {
-        model.addAttribute("owners", ownerService.findAll());
-
-        return "owners/index";
-    }
-
     @GetMapping("/find")
     public String findOwners(Model model) {
         model.addAttribute("owner", Owner.builder().build());
         return "owners/findOwners";
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String processFindForm(Owner owner, BindingResult result, Model model) {
         if (owner.getLastName() == null) {
             owner.setLastName("");

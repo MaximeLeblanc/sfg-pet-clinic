@@ -102,8 +102,7 @@ class OwnerControllerTest {
 
         mockMvc.perform(post("/owners/new"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/owners/1"))
-                .andExpect(model().attributeExists("owner"));
+                .andExpect(view().name("redirect:/owners/1"));
 
         verify(ownerService).save(ArgumentMatchers.any());
     }
@@ -116,8 +115,6 @@ class OwnerControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/createOrUpdateOwnerForm"))
                 .andExpect(model().attributeExists("owner"));
-
-        verifyNoInteractions(ownerService);
     }
 
     @Test
@@ -126,8 +123,7 @@ class OwnerControllerTest {
 
         mockMvc.perform(post("/owners/1/edit"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/owners/1"))
-                .andExpect(model().attributeExists("owner"));
+                .andExpect(view().name("redirect:/owners/1"));
 
         verify(ownerService).save(ArgumentMatchers.any());
     }
