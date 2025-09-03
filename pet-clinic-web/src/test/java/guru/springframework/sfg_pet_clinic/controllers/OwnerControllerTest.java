@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -71,11 +72,24 @@ class OwnerControllerTest {
     @Test
     void processFindFormReturnOne() throws Exception {
         when(ownerService.findAllByLastNameLike(anyString())).thenReturn(
-                Arrays.asList(Owner.builder().id(1L).build()));
+                Collections.singletonList(Owner.builder().id(1L).build()));
 
         mockMvc.perform(get("/owners"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/owners/1"));
+    }
+
+    @Test
+    void processFindFormEmptyReturnMany() throws Exception {
+        when(ownerService.findAllByLastNameLike(anyString())).thenReturn(
+                Arrays.asList(Owner.builder().id(1L).build(), Owner.builder().id(2L).build())
+        );
+
+        mockMvc.perform(get("/owners")
+                        .param("lastName", ""))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownersList"))
+                .andExpect(model().attribute("listOwners", hasSize(2)));
     }
 
     @Test
